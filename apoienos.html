@@ -1,0 +1,76 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Apoie-nos - Projeto Bitcoin Municipal</title>
+    <link rel="stylesheet" href="styles.css">
+</head>
+<body>
+    <div class="container">
+        <header>
+            <img src="https://iili.io/2PJ7kkG.jpg" alt="Imagem do Projeto Bitcoin Municipal" class="header-image">
+            <h1 class="title">Apoie-nos</h1>
+            <p class="subtitle">
+                Você não precisa doar dinheiro para nos apoiar! Apenas envie um e-mail para sua prefeitura, e juntos podemos fazer a diferença!
+            </p>
+            <form id="emailForm">
+                <div class="input-group">
+                    <label for="nomePrefeito">Nome do seu prefeito:</label>
+                    <input type="text" id="nomePrefeito" name="nomePrefeito" required>
+                </div>
+                <div class="input-group">
+                    <label for="cidade">Sua cidade:</label>
+                    <input type="text" id="cidade" name="cidade" required>
+                </div>
+                <div class="input-group">
+                    <label for="emailPrefeitura">Email da sua prefeitura:</label>
+                    <input type="email" id="emailPrefeitura" name="emailPrefeitura" required>
+                </div>
+                <button type="button" class="continue-button" onclick="enviarEmail()">Enviar</button>
+            </form>
+        </header>
+    </div>
+
+    <script>
+        function enviarEmail() {
+            const nomePrefeito = document.getElementById('nomePrefeito').value;
+            const cidade = document.getElementById('cidade').value;
+            const emailPrefeitura = document.getElementById('emailPrefeitura').value;
+
+            const assunto = `Proposta para adoção do Bitcoin em ${cidade}`;
+            const corpoEmail = `
+Prezado(a) ${nomePrefeito},
+
+Tudo bem? Esperamos que sim! 
+
+Nós do Projeto Bitcoin Municipal estamos em uma missão de modernizar o sistema de pagamentos nas cidades brasileiras. Nosso objetivo é incentivar a adoção do Bitcoin como forma de pagamento voluntária em comércios de sua cidade, trazendo benefícios como segurança, redução de custos e maior transparência nas transações.
+
+A implementação do Bitcoin pode transformar a economia local, permitindo transações rápidas, seguras e sem a necessidade de intermediários como bancos. Além disso, a cidade pode se tornar um polo inovador, atraindo novos investidores e empresas para o seu comércio.
+
+Aqui estão algumas razões para considerar a adoção do Bitcoin em ${cidade}:
+
+- **Segurança Financeira**: O Bitcoin utiliza uma tecnologia avançada de blockchain, tornando as transações imutáveis e protegidas contra fraudes. Isso garante mais segurança para os comerciantes e consumidores.
+
+- **Inovação e Crescimento**: A adoção do Bitcoin pode posicionar ${cidade} como um exemplo de inovação financeira, atraindo empreendedores e investimentos em tecnologia.
+
+- **Maior Autonomia para os Comerciantes**: Com o Bitcoin, comerciantes podem aceitar pagamentos diretamente de seus clientes, sem depender de intermediários financeiros. Isso reduz custos e aumenta a agilidade nas transações.
+
+- **Transparência e Combate à Corrupção**: O Bitcoin oferece um registro transparente e auditável de todas as transações, ajudando a combater a corrupção e proporcionando maior controle sobre as finanças municipais.
+
+- **Inclusão Financeira**: A criptomoeda pode ser uma solução de inclusão para cidadãos que não têm acesso ao sistema bancário, mas possuem um celular com acesso à internet.
+
+Gostaríamos de conversar mais sobre como podemos ajudar ${cidade} a implementar essa mudança positiva. Nosso projeto é simples: queremos que o uso do Bitcoin seja uma escolha voluntária para comerciantes, sem obrigar ninguém a adotar. Estamos à disposição para fornecer detalhes sobre como isso pode funcionar.
+
+Agradecemos desde já a sua atenção e esperamos contar com o seu apoio para levar nossa cidade a um novo patamar de inovação e segurança.
+
+Atenciosamente,  
+Projeto Bitcoin Municipal`;
+
+            const mailtoLink = `mailto:${emailPrefeitura}?subject=${encodeURIComponent(assunto)}&body=${encodeURIComponent(corpoEmail)}`;
+
+            window.location.href = mailtoLink;
+        }
+    </script>
+</body>
+  </html>
